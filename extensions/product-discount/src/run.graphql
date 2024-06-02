@@ -1,0 +1,26 @@
+query RunInput {
+  cart {
+    cost {
+      totalAmount {
+        amount
+        currencyCode
+      }
+    }
+    lines {
+      quantity
+      merchandise {
+        __typename
+        ...on ProductVariant {
+          id
+          title
+          sku
+          product {
+            metafield(namespace: "custom", key: "tier") {
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}
